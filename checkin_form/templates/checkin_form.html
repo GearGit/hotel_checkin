@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Hotel Checkin</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+    
+    <style>
+      body{
+        margin:0;
+        padding:0;
+        background-color: grey;
+      }
+      article, aside, figure, footer, header, hgroup, 
+      menu, nav, section { display: block; }
+    </style>
+  </head>
+  <body>
+    <div class="card shadow-lg container bg-white mt-5 rounded d-flex justify-content-center align-items-center" s>
+      
+      <form class="w-100 h-100" action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="row">
+            <div class="col">
+              <label for="firstName">First name</label>
+              <input type="text" class="form-control" id="formGroupFirstName" placeholder="Enter first name">
+            </div>
+            <div class="col">
+              
+              <label for="lastName">Last name</label>
+              <input type="text" class="form-control" id="formGroupLastName" placeholder="Enter last name">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col">
+              <label for="emailAddress">Email Address</label>
+              <input type="email" class="form-control" id="formGroupEmailAddress" placeholder="Enter email address">
+            </div>
+            <div class="col">
+              <label for="age">Age</label>
+              <input type="number" class="form-control" id="formGroupAge" placeholder="Age">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea class="form-control" id="formGroupAddress" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+              <label class="form-check-label" for="labelGender">Gender : </label>
+              <div class="row">
+                <div class="col">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderMale" id="genderMale" value="male">
+                    <label class="form-check-label" for="labelMale">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderFemale" id="genderFemale" value="female">
+                    <label class="form-check-label" for="labelFemale">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderOthers" id="genderOthers" value="others">
+                    <label class="form-check-label" for="labelOthers">Others</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="dropdown w-50">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownPaymentmethod" data-toggle="dropdown" 
+                      aria-haspopup="true" aria-expanded="false">Select a Payemnt Method</button>
+                    <div class="dropdown-menu w-75" aria-labelledby="dropdownPaymentmethod">
+                      <button class="dropdown-item" type="button">Cash</button>
+                      <button class="dropdown-item" type="button">Credit Card</button>
+                      <button class="dropdown-item" type="button">Debit Card</button>
+                      <button class="dropdown-item" type="button">UPI</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <div class="form-group">
+              <label class="form-check-label" for="labelGender">Additional Options : </label>
+              <div class="row">
+                <div class="col">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="featuresAirConditioned" id="featuresAirConditioned" value="air conditioned">
+                    <label class="form-check-label" for="labelAirConditioned">Air Conditioned</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="featuresFreePickUp" id="featuresFreePickUp" value="free pick-up">
+                    <label class="form-check-label" for="labelFreePickUp">Free Pick-Up</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="featuresMiniFridge" id="featuresMiniFridge" value="mini fidge">
+                    <label class="form-check-label" for="labelMiniFridge">Mini Fridge</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="featuresGym" id="featuresGym" value="gym">
+                    <label class="form-check-label" for="labelGym">Gym</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <div class="custom-file" id="customFile" lang="es">
+                      <input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" onchange="readURL(this);" />
+                      <label class="custom-file-label" for="exampleInputFile">
+                        Select file...
+                      </label>
+                    </div>
+                  </div>
+                  <img id="proof-img" src="#" alt="image" />
+                </div>
+              </div>
+          </div>
+
+      <div class="form-group ">
+        <div class="row">
+          <div class="col">
+            <label class="control-label requiredField" for="date">Check-In Date<span class="asteriskField">*</span>
+            </label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar pr-2 pt-2"></i>
+                </div>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+              </div>
+          </div>
+          <div class="col">
+            <label class="control-label requiredField" for="date">Check-Out Date<span class="asteriskField">*</span>
+            </label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar pr-2 pt-2"></i>
+                </div>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+              </div>
+          </div>
+        </div>
+      </div>
+        
+        <div class="form-group">
+            <div class="input-group mb-3" required>
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01" required>Select a room</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01" required>
+                <option selected>None</option>
+                <option value="1001">1001 (1 bed)</option>
+                <option value="1002">1002 (2 beds)</option>
+                <option value="1003">1003 (3 beds)</option>
+                <option value="1004">1004 (4 beds)</option>
+                <option value="2001">2001 (1 bed)</option>
+                <option value="2002">2002 (2 beds)</option>
+              </select>
+            </div>
+        </div>
+          <div class="form-group">
+      <div class="text-center">
+       <button class="btn btn-primary w-25 mt-2" name="submit" type="submit">
+        Submit
+       </button>
+      </div>
+     <!-- </div> -->
+          </form>
+        </div>
+        
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+        <!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+        
+        <script>
+          $(document).ready(function(){
+            var date_input=$('input[name="date"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            date_input.datepicker({
+              format: 'mm/dd/yyyy',
+              container: container,
+              todayHighlight: true,
+              autoclose: true,
+            })
+          });
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                $('#proof-img')
+                  .attr('src', e.target.result)
+                  .width(150)
+                  .height(200);
+              };
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+        </script>
+  </body>
+</html>
