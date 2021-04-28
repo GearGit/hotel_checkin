@@ -20,12 +20,8 @@ def setCheckInView(request):
 
     if request.method == 'POST':
         form = CheckInModel(request.POST)
-
-        consoloe.log("hi")
         if form.is_valid():
             new_hardware = form.save()
-
-
             return render('checkin_form.html')
     else:
         form = CheckInModel()
