@@ -48,14 +48,14 @@
             <td>{{ data.additional_choices }}</td>  
             <td><img src="media/{{data.file_field}}" alt="" width=50 height=50></td>
             <td>  
-                <a href="/update/{{ data.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                <a href="/update/{{ data.id }}"><span class="glyphicon glyphicon-pencil" >Update</span></a>  
                 <a href="/delete/{{ data.id }}">Delete</a>  
             </td>  
         </tr>  
     {% endfor %}  
         </tbody>  
     </table>  
-    <button class="btn btn-primary" href="/checkin">CheckIn a Customer</a>
+    <a class="btn btn-primary" href="/checkin">CheckIn a Customer</a>
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -19,22 +19,33 @@
       <div class="form-group row">  
         <label class="col-sm-2 col-form-label">First Name:</label>  
         <div class="col-sm-4">  
-          {{ form.first_name }}  
+          <input type="text" name="first_name" id="{{data.id}}_first_name" required maxlength="30" value="{{ data.first_name }}" />
+          
+          
+          
+          
+          <!-- <input type="text" name="gender" id="{{data.id}}_gender" required maxlength="10" value="{{ data.gender }}" />
+          <input type="text" name="payment_method" id="{{data.id}}_payment_method" required maxlength="20" value="{{ data.payment_method }}" />
+          <input type="text" name="file_field" id="{{data.id}}_file_field" required value="{{ data.file_field }}" />
+          <input type="text" name="checkin" id="{{data.id}}_checkin" required value="{{ data.checkin }}" />
+          <input type="text" name="checkout" id="{{data.id}}_checkout" required value="{{ data.checkout }}" />
+          <input type="text" name="room_allocated" id="{{data.id}}_room_allocated" required maxlength="100" value="{{ data.room_allocated }}" />
+          <input type="text" name="additional_choices" id="{{data.id}}_additional_choices" required maxlength="100" value="{{ data.additional_choices }}" /> -->
         </div>  
         <label class="col-sm-2 col-form-label">Last Name:</label>  
         <div class="col-sm-4">  
-          {{ form.last_name }}  
+          <input type="text" name="last_name" id="{{data.id}}_last_name" required maxlength="30" value="{{ data.last_name }}" />
         </div>  
       </div>  
        
         <div class="form-group row">  
           <label class="col-sm-2 col-form-label">Email Address:</label>  
           <div class="col-sm-4">  
-            {{ form.email }}  
+            <input type="email" name="email" id="{{data.id}}_email" required maxlength="254" value="{{ data.email }}" />
           </div>  
         <label class="col-sm-2 col-form-label">Age:</label>  
         <div class="col-sm-4">  
-          {{ form.age }}  
+          <input type="number" name="age" id="{{data.id}}_age" required value="{{ data.age }}" />
         </div>  
       </div>  
           
@@ -42,49 +53,77 @@
         <div class="form-group row">  
         <label class="col-sm-2 col-form-label">Address:</label>      
         <div class="col-sm-8">  
-            {{ form.address }}  
+          <textarea name="address" id="{{data.id}}_address" required maxlength="250" >{{ data.address }}</textarea>
         </div>
       </div>    
         <div class="form-group row">  
           <label class="col-sm-2 col-form-label">Additional Services:</label>      
           <div class="col-sm-4">
-            {{form.additional_choices }}
+            <label  for="{{data.id}}_ac">
+              <input type="checkbox" name="ac" value="Air Conditioned" id="{{data.id}}_ac" >
+              Air Conditioned
+            </label>
+            <label for="{{data.id}}_pick-up"><input type="checkbox" name="pick-up" value="Free Pick-Up" id="{{data.id}}_pick-up">
+              Free Pick-Up</label>
+             
+             <label for="{{data.id}}_mini-fridge"><input type="checkbox" name="mini-fridge" value="Mini Fridge" id="{{data.id}}_mini-fridge">
+              Mini Fridge</label>
+             
+              <label for="{{data.id}}_gym"><input type="checkbox" name="gym" value="Gym" id="{{data.id}}_gym">
+                Gym</label>
           </div>
           <label class="col-sm-2 col-form-label">Gender:</label>      
           <div class="col-sm-4">  
-              {{form.gender}}
+            <label for="id_gender_male"><input type="radio" name="gender" value="Male" id="id_gender_male">
+              Male</label>
+            <label for="id_gender_female"><input type="radio" name="gender" value="Female" id="id_gender_female">
+              Female</label>
+            <label for="id_gender_others"><input type="radio" name="gender" value="Others" id="id_gender_others">
+              Others</label>
           </div>
       </div>     
       
       <div class="form-group row">  
         <label class="col-sm-2 col-form-label">Payment Method:</label>      
         <div class="col-sm-4">  
-          {{form.payment_method }}
-           
+          <select name="payment_method" id="id_payment_method" selected={{data.payment_method}}>
+            <option name="CREDIT CARD" value="CREDIT CARD">CREDIT CARD</option>
+            <option name="DEBIT CARD" value="DEBIT CARD">DEBIT CARD</option>
+            <option name="CASH" value="CASH">CASH</option>
+            <option name="UPI" value="UPI">UPI</option>
+            <!-- <option value="CASH">CASH</option>
+            <option value="DEBIT CARD">DEBIT CARD</option>
+            <option value="UPI">UPI</option> -->
+          </select>
         </div>
         <label class="col-sm-2 col-form-label">Room Allocated:</label>      
         <div class="col-sm-4"> 
-          {{form.room_allocated }}
-         
+          <select name="room_allocation" id="id_room_allocation" selected={{data.room_allocation}}>
+          <option name="1001" value="1001">1001(1 bed)</option>
+          <option name="1002" value="1002">1002(2 beds)</option>
+          <option name="1003" value="1003">1003(3 beds)</option>
+          <option name="1004" value="1004">1004(4 beds)</option>
+          <option name="2001" value="2001">2001(1 bed)</option>
+          <option name="2002" value="2002">2002(2 beds)</option>
+         </select
         </div>
       </div>   
       <div class="form-group row">  
         <label class="col-sm-2 col-form-label">Check-In:</label>      
         <div class="col-sm-4">  
-            {{ form.checkin }}
+          <input type="date" name="checkin" class="form-control" id="id_checkin" value="{{ data.checkin }}">
         </div>
       </div>    
       <div class="form-group row">  
         <label class="col-sm-2 col-form-label">Check-Out:</label>      
         <div class="col-sm-4">  
-            {{ form.checkout }}
+          <input type="date" name="checkout" class="form-control" id="id_checkout" value="{{ data.checkout }}">
         </div>
       </div>
       <div class="form-group row">  
         <label class="col-sm-2 col-form-label">Proof of Identitiy Document:</label>      
         <div class="col-sm-4">  
-            {{ form.file_field }}
-            
+          <input type="file" name="file_field" accept="image/*" id="id_file_field" value="{{ data.file_field }}">
         </div>
       </div>  
     
