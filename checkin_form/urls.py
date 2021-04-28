@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import setCheckInView,homePage
+from .views import HomeView, CheckInView,InitialView
 
 urlpatterns = [
-    path('',homePage),
-    path('checkin/',setCheckInView)
+    path('',InitialView.as_view()),
+    path('checkin',CheckInView.as_view()),
+    path('home',HomeView.as_view()),
 ]

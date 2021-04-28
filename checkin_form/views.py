@@ -1,29 +1,40 @@
-from django.shortcuts import render
-from django.template import RequestContext
+from django.shortcuts import render,redirect
+from django.views import View
+from .models import CheckInModel
+
 # Create your views here.
 
-from .forms import CheckInModel
+from .forms import CheckInForm
 
-def homePage(request):
-    return render(request,'home.html')
+class InitialView(View):
+    def get(self, request):
+        return redirect('/home')
 
-def setCheckInView(request):
-    # form = CheckInModel(request.POST)
-    # if request.method == "POST":
-    #     form = CheckInModel(request.POST)
-    #     if form.is_valid():
-    #         form.save()
+class HomeView(View):
+     def get(self, request):
+        obj = CheckInModel.objects.all()  
+        return render(request,"home.html",{'dataObjects':obj}) 
 
-    # context = {'form':form}
+class CheckInView(View):
+    def get(self,request):
+        form = CheckInForm()
+        return render(request,'checkin_form.html',{'form':form})
     
-    # return render(request,'checkin_form.html'.context)
-
-    if request.method == 'POST':
-        form = CheckInModel(request.POST)
+    def post(self,request):
+        form = CheckInForm(request.POST,request.FILES)
+        print(form.errors)
         if form.is_valid():
-            new_hardware = form.save()
-            return render('checkin_form.html')
-    else:
-        form = CheckInModel()
+            form.save()
+            return redirect('/home')
 
-        return render(None,'checkin_form.html', {'form': form})
+# class UpdateView(View):
+#     def get(self, request):
+#         obj = CheckInModel.objects.all()  
+#         return render(request,"update.html",{'dataObjects':obj})  
+
+# class Delete(View):
+#     def get(self,request,id):
+#         obj = CheckInModel.objects.get(id=id)  
+#         obj.delete()  
+#         return redirect("/home")      
+

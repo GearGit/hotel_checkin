@@ -8,14 +8,54 @@
     <title>Hotel Checkin</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'admin/css/forms.css' %}">
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container w-100 h-100 d-flex justify-content-center align-items-center">
-        <button type="button" class="btn btn-primary">Primary</button>
-    </div>
+    <table class="table table-striped table-bordered table-sm ">  
+        <thead class="thead-dark">  
+        <tr>  
+            <th>id</th>  
+            <th>first_name</th>  
+            <th>last_name</th>  
+            <th>email</th>  
+            <th>age</th>  
+            <th>address</th>  
+            <th>gender</th>
+            <th>payment_method</th>
+            <th>file_field</th>
+            <th>checkin</th>
+            <th>checkout</th>
+            <th>room_allocated</th>
+            <th>additional_choices</th>
+        </tr>  
+        </thead>  
+        <tbody>  
+    {% for data in dataObjects %}  
+        <tr>  
+            <td>{{ data.id }}</td>  
+            <td>{{ data.first_name }}</td>  
+            <td>{{ data.last_name }}</td>  
+            <td>{{ data.email }}</td>  
+            <td>{{ data.age }}</td>  
+            <td>{{ data.address }}</td>  
+            <td>{{ data.gender }}</td>  
+            <td>{{ data.payment_method }}</td>  
+            <td>{{ data.file_field }}</td>  
+            <td>{{ data.checkin }}</td>  
+            <td>{{ data.checkout }}</td>  
+            <td>{{ data.room_allocated }}</td>  
+            <td>{{ data.additional_choices }}</td>  
+            <td><img src="media/{{data.file_field}}" alt="" width=50 height=50></td>
+            <td>  
+                <a href="/update/{{ data.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                <a href="/delete/{{ data.id }}">Delete</a>  
+            </td>  
+        </tr>  
+    {% endfor %}  
+        </tbody>  
+    </table>  
+    <button class="btn btn-primary" href="/checkin">CheckIn a Customer</a>
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

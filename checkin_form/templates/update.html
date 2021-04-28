@@ -12,7 +12,7 @@
   <body>
     <div class="container shadow-lg container bg-white mt-5 mb-5 rounded d-flex justify-content-center align-items-center" s>
       
-      <form class="w-100 h-100" action="/checkin" enctype="multipart/form-data" method="POST">
+      <form class="w-100 h-100" action="/update/{{data.id}}" enctype="multipart/form-data" method="POST">
       {% csrf_token %}
       <div class="container"> 
           
@@ -91,7 +91,7 @@
         <div class="form-group row">  
           <label class="col-sm-1 col-form-label"></label>  
           <div class="col-sm-4">  
-          <button type="submit" class="btn btn-primary">Submit</button>  
+          <button type="submit" class="btn btn-primary">Update</button>  
           </div>  
         </div>  
         </div> 
